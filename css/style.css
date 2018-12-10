@@ -1,0 +1,106 @@
+body{
+    margin: 0
+}
+
+section#view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desc {
+    text-align: center;
+    color: #aaa;
+    font-family: Tahoma;
+}
+
+#grid {
+    width: calc(10*50px);
+    height: calc(10*50px);
+    display: flex;
+    flex-wrap: wrap;
+    transform: rotateX(55deg) rotateY(0) rotateZ(-45deg);
+}
+
+.cell {
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #998f8a;
+    transition: .1s;
+    cursor: pointer;
+}
+
+
+.cell-active {
+    background-color: red;
+}
+
+.cell:hover {
+    background-color: #e7bd63;
+}
+
+
+.color {
+    height: 40px;
+    width: 40px;
+    background-color: #e7bd63;
+}
+
+
+.park {
+    background: url(../img/park.png);
+}
+.bld1 {
+    background: url(../img/bld.png);
+}
+.shop1 {
+    background: url(../img/shop1.png);
+}
+.shop2 {
+    background: url(../img/shop2.png);
+}
+.road1 {
+    background: url(../img/road1.png);
+}
+.road2 {
+    background: url(../img/road2.png);
+}
+.road3 {
+    background: url(../img/road3.png);
+}
+.road4 {
+    background: url(../img/road4.png);
+}
+.home1 {
+    background: url(../img/home1.png);
+}
+
+.items-map .item {
+    pointer-events: none;
+}
+
+
+.item {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: flex-end;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    cursor: pointer;
+
+}
+
+.items-list {
+    padding: 20px;
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
+
+}
+
+.items-list .item {
+    margin: 0 5px;
+}
