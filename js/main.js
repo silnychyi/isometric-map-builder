@@ -7,17 +7,18 @@ document.addEventListener("DOMContentLoaded", ()=>{
     let pos
     
     function clone() {
-        console.log(pos)
+        
         itemsList.forEach(item => {
             item.removeEventListener("click", clone)
         })
+
         itemClone = itemsMap.appendChild(this.cloneNode(true)); 
         itemClone.style.top = `${pos.top - 200 + pos.height}px`
         itemClone.style.left = `${pos.left}px`
         itemClone.style.width = `${pos.width}px`
         itemClone.style.height = `200px`
         itemClone.style.position = `absolute`
-        console.dir(itemClone)
+
         if (itemClone.classList.contains("road")){
             itemClone.style.zIndex = 1
         }else if(itemClone.classList.contains("bld")) {
