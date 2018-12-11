@@ -66,7 +66,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
         while (itemsHistory.firstChild) {
             itemsHistory.removeChild(itemsHistory.firstChild);
         }
-        itemsArr.forEach(item => {
+
+        let list = []
+
+        if (itemsArr.length > 12){
+            list = itemsArr.slice().splice(-12)
+        } else {
+            list = itemsArr.slice()
+        }
+        list.forEach(item => {
             let row = document.createElement("div");
             let elem = document.createElement("div");
             let i = document.createElement("i");
@@ -74,7 +82,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             row.classList = "item-history-row";
             row.dataset.id = item.id;
             elem.classList = item.class;
-            itemsHistory.insertBefore(row, itemsHistory.firstChild);;
+            itemsHistory.insertBefore(row, itemsHistory.firstChild);
             row.appendChild(elem);
             row.appendChild(i);
 
@@ -96,8 +104,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 itemsArr.forEach((e, index) =>{
                     if (this.parentElement.dataset.id == e.id){
                         itemsArr.splice(index, 1)
-                        console.log(itemsArr)
-                        console.log(index)
                     }
                 })
                 renderHistory();

@@ -59,8 +59,6 @@ section#view {
     left: 10px;
     top: 10px;
     padding: 0 10px;
-    height: 500px;
-    overflow: scroll;
 }
 
 .item-history-row {
