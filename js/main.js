@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", ()=>{
 
     let cells = document.querySelectorAll(".cell");
-    let items = document.querySelectorAll(".item");
     let itemsList = document.querySelector("#items-list");
-    let itemsMap = document.querySelector(".items-map");
+    let items = itemsList.querySelectorAll(".item");
     let itemsHistory = document.querySelector(".items-history");
     let scrollUp = document.querySelector(".fa-angle-up");
     let scrollDown = document.querySelector(".fa-angle-down");
 
-    let pos
+    let currentCell
 
     itemsArr = []
 
@@ -20,45 +19,56 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
     
     function clone() {
-        
         items.forEach(item => {
             item.removeEventListener("click", clone)
         })
 
         currentItem = {
             id: idGenerator(),
+            idCell: currentCell.id,
             class: this.classList.value,
-            top: `${pos.top - 200 + pos.height + window.scrollY}px`,
-            left: `${pos.left}px`,
-            width: `${pos.width}px`,
             zIndex: null
         }
 
         if (this.classList.contains("road")){
             currentItem.zIndex = 1
         }else if(this.classList.contains("bld")) {
-            currentItem.zIndex = `${parseInt(pos.top)+19}`
+            currentItem.zIndex = parseInt(currentCell.data.top)+19
         }else{
-            currentItem.zIndex = `${parseInt(pos.top)}`
+            currentItem.zIndex = parseInt(currentCell.data.top)
         }
 
+        
+        
+        itemsArr.forEach((item, index, object) => {
+            if (item.idCell == currentCell.id){
+                object.splice(index, 1)
+                console.log(item)
+            }
+        })
         itemsArr.push(currentItem);
+
+
+
 
     }
 
     function renderToGrid(){
-        while (itemsMap.firstChild) {
-            itemsMap.removeChild(itemsMap.firstChild);
-        } 
+        cells.forEach(j =>{
+            if (j.hasChildNodes()){
+                j.removeChild(j.childNodes[0]);
+            }
+        })
         itemsArr.forEach(item => {
             let elem = document.createElement('div');
             elem.dataset.id = item.id;
             elem.classList = item.class;
-            elem.style.top = item.top;
-            elem.style.left = item.left;
-            elem.style.width = item.width;
             elem.style.zIndex = item.zIndex;
-            itemsMap.appendChild(elem)
+            cells.forEach(i =>{
+                if (i.dataset.id == item.idCell){
+                    i.appendChild(elem)
+                }
+            })
         });
     }
 
@@ -87,16 +97,20 @@ document.addEventListener("DOMContentLoaded", ()=>{
             row.appendChild(i);
 
             row.addEventListener("mouseenter", ()=>{
-                itemsMap.querySelectorAll(".item").forEach(i =>{
-                    if (i.dataset.id == row.dataset.id){
-                        i.classList.add("item-map-hover");
+                cells.forEach(j =>{
+                    if (j.childNodes[0]){
+                        if (j.childNodes[0].dataset.id == row.dataset.id){
+                            j.childNodes[0].classList.add("item-hover");
+                        }    
                     }
                 })
             });
 
             row.addEventListener("mouseleave", ()=>{
-                itemsMap.querySelectorAll(".item").forEach(i =>{
-                    i.classList.remove("item-map-hover");
+                cells.forEach(j =>{
+                    if (j.childNodes[0]){
+                        j.childNodes[0].classList.remove("item-hover");
+                    }
                 })
             })
 
@@ -113,7 +127,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
         });
     }
 
-    cells.forEach((cell) => {
+    cells.forEach((cell, index) => {
+        cell.dataset.id = index+1;
+
         cell.addEventListener("click", function _listener(){
             new Promise(function(resolve, reject) {
                 resolve(cell)
@@ -128,7 +144,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
                     item.addEventListener("click", renderToGrid)
                     item.addEventListener("click", renderHistory)
                 })
-                pos = cell.getBoundingClientRect()
+                currentCell = {
+                    "id": cell.dataset.id,
+                    "data": cell.getBoundingClientRect()
+                }
             })
         });
     }); 

@@ -39,6 +39,7 @@ section#view {
     border: 1px solid #998f8a;
     transition: .1s;
     cursor: pointer;
+    position: relative;
 }
 
 
@@ -50,6 +51,22 @@ section#view {
     background-color: #e7bd63;
 }
 
+.cell .item {
+    transform: rotateX(-45deg) rotateY(35deg) rotateZ(60deg);
+    width: 120px;
+    position: absolute;
+    top: -101px;
+    left: -61px;
+    height: 150px;
+    pointer-events: none;
+    transform-origin: bottom center;
+    transition: .15s;
+}
+
+.item-hover {
+    transform: rotateX(-45deg) rotateY(35deg) rotateZ(60deg) scale(1.2) translateY(-10px) !important;
+    z-index: 99999 !important;
+}
 
 .items-history {
     display: flex;
@@ -143,13 +160,6 @@ section#view {
     background: url(../img/home1.png);
 }
 
-.items-map .item {
-    pointer-events: none;
-    height: 200px;
-    position: absolute;
-    transition: .15s;
-}
-
 
 .item {
     height: 100px;
@@ -160,12 +170,6 @@ section#view {
     background-repeat: no-repeat;
     background-position: bottom;
     cursor: pointer;
-}
-
-.item-map-hover {
-    transform: translateY(-20px) scale(1.3);
-    transform-origin: center bottom;
-    z-index: 9999999 !important;
 }
 
 #items-list {
