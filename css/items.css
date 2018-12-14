@@ -1,0 +1,31 @@
+/* roads */
+.road1 {background: url(../img/road1.png)}
+.road2 {background: url(../img/road2.png)}
+.road3 {background: url(../img/road3.png)}
+.road4 {background: url(../img/road4.png)}
+.road5 {background: url(../img/road5.png)}
+.road6 {background: url(../img/road6.png)}
+.road7 {background: url(../img/road7.png)}
+.road7 {background: url(../img/road7.png)}
+.road8 {background: url(../img/road8.png)}
+.road9 {background: url(../img/road9.png)}
+.road10 {background: url(../img/road10.png)}
+.road11 {background: url(../img/road11.png)}
+
+
+
+.park {
+    background: url(../img/park.png);
+}
+.bld1 {
+    background: url(../img/bld.png);
+}
+.shop1 {
+    background: url(../img/shop1.png);
+}
+.shop2 {
+    background: url(../img/shop2.png);
+}
+.home1 {
+    background: url(../img/home1.png);
+}

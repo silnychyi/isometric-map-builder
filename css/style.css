@@ -42,12 +42,7 @@ section#view {
     position: relative;
 }
 
-
-.cell-active {
-    background-color: red;
-}
-
-.cell:hover {
+.cell:hover, .cell-active {
     background-color: #e7bd63;
 }
 
@@ -55,17 +50,20 @@ section#view {
     transform: rotateX(-45deg) rotateY(35deg) rotateZ(60deg);
     width: 120px;
     position: absolute;
-    top: -101px;
+    top: -121px;
     left: -61px;
-    height: 150px;
+    height: 170px;
     pointer-events: none;
     transform-origin: bottom center;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 120px;
     transition: .15s;
 }
 
 .item-hover {
     transform: rotateX(-45deg) rotateY(35deg) rotateZ(60deg) scale(1.2) translateY(-10px) !important;
-    z-index: 99999 !important;
+    z-index: 9999 !important;
 }
 
 .items-history {
@@ -92,6 +90,8 @@ section#view {
     height: 25px;
     width: 40px;
     background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
     cursor: default;
 }
 
@@ -102,90 +102,60 @@ section#view {
 }
 
 .item-history-row i{
+    color: #555;
     cursor: pointer;
     font-size: 15px;
     margin-right: 5px;
 }
 
-
-.scroll-buttons {
+.items-list-wrap {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
-    display: flex;
-    flex-direction: column;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    transform: translateX(300px);
+    transition: .2s;
+    z-index: 999999;
 }
 
-.scroll-buttons i{
-    font-size: 40px;
-    cursor: pointer;
-    transition: .1s;
-}
-
-.scroll-buttons i:nth-child(1){
-    margin-bottom: 10px;
-}
-
-.scroll-buttons i:hover{
-    transform: scale(1.5)
-}
-
-
-
-.park {
-    background: url(../img/park.png);
-}
-.bld1 {
-    background: url(../img/bld.png);
-}
-.shop1 {
-    background: url(../img/shop1.png);
-}
-.shop2 {
-    background: url(../img/shop2.png);
-}
-.road1 {
-    background: url(../img/road1.png);
-}
-.road2 {
-    background: url(../img/road2.png);
-}
-.road3 {
-    background: url(../img/road3.png);
-}
-.road4 {
-    background: url(../img/road4.png);
-}
-.home1 {
-    background: url(../img/home1.png);
-}
-
-
-.item {
-    height: 100px;
-    width: 100px;
-    display: flex;
-    align-items: flex-end;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    cursor: pointer;
-}
-
-#items-list {
-    margin-left: 50px;
-    padding: 20px;
-    height: 100px;
+.items-list {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 100px;
+    grid-gap: 10px;
+    height: 100%;
     overflow: scroll;
-    position: relative;
+    background-color: #fff;
 }
 
-#items-list .container {
+.items-list-wrap.items-list-active {
+    transform: translateX(0) !important;
+}
+
+.items-list .item {
+    height: 100%;
+    min-height: 100px;
     display: flex;
     align-items: flex-end;
-    flex-wrap: wrap;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 20px;
 }
 
-#items-list .item {
-    margin: 0 5px;
+.items-list .item:hover {
+    border: 1px dashed #aaa;
+}
+
+.items-list .close-list {
+    position: absolute;
+    top: 10px;
+    left: -35px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #555;
 }

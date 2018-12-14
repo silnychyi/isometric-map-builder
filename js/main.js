@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", ()=>{
 
     let cells = document.querySelectorAll(".cell");
-    let itemsList = document.querySelector("#items-list");
+    let itemsList = document.querySelector(".items-list");
+    let itemsListWrap = document.querySelector(".items-list-wrap");
     let items = itemsList.querySelectorAll(".item");
     let itemsHistory = document.querySelector(".items-history");
-    let scrollUp = document.querySelector(".fa-angle-up");
-    let scrollDown = document.querySelector(".fa-angle-down");
+    let toggleBtn = document.querySelector(".close-list");
 
     let currentCell
 
@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
             item.removeEventListener("click", clone)
         })
 
+        cells.forEach(i => {i.classList.remove("cell-active")})
+
+
         currentItem = {
             id: idGenerator(),
             idCell: currentCell.id,
@@ -30,27 +33,27 @@ document.addEventListener("DOMContentLoaded", ()=>{
             zIndex: null
         }
 
+        // setting z-index
         if (this.classList.contains("road")){
             currentItem.zIndex = 1
-        }else if(this.classList.contains("bld")) {
+        }else if(this.classList.contains("l")) {
             currentItem.zIndex = parseInt(currentCell.data.top)+19
-        }else{
+        }else if(this.classList.contains("m")) {
+            currentItem.zIndex = parseInt(currentCell.data.top)+10
+        }else {
             currentItem.zIndex = parseInt(currentCell.data.top)
         }
 
         
-        
+        // delete item on stacking
         itemsArr.forEach((item, index, object) => {
             if (item.idCell == currentCell.id){
                 object.splice(index, 1)
-                console.log(item)
             }
         })
+
         itemsArr.push(currentItem);
-
-
-
-
+        
     }
 
     function renderToGrid(){
@@ -79,8 +82,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
         let list = []
 
-        if (itemsArr.length > 12){
-            list = itemsArr.slice().splice(-12)
+        if (itemsArr.length > 15){
+            list = itemsArr.slice().splice(-15)
         } else {
             list = itemsArr.slice()
         }
@@ -131,7 +134,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
         cell.dataset.id = index+1;
 
         cell.addEventListener("click", function _listener(){
+            if(!itemsListWrap.classList.contains("items-list-active")){
+                itemsListWrap.classList.add("items-list-active")
+            }
+            cells.forEach(i => {i.classList.remove("cell-active")})
+            cell.classList.add("cell-active");
+
             new Promise(function(resolve, reject) {
+
                 resolve(cell)
     
             }).then(function(cell){
@@ -150,16 +160,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 }
             })
         });
-    }); 
+    });
+
+
+
+
+    toggleBtn.addEventListener("click", ()=>{
+        itemsListWrap.classList.remove("items-list-active")
+    })
    
-
-    scrollUp.addEventListener("click", ()=>{
-        itemsList.scrollTop -= 50;
-    });
-    scrollDown.addEventListener("click", ()=>{
-        itemsList.scrollTop += 50;
-    });
-
 })
 
 
