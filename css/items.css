@@ -14,18 +14,13 @@
 
 
 
-.park {
-    background: url(../img/park.png);
-}
-.bld1 {
-    background: url(../img/bld.png);
-}
-.shop1 {
-    background: url(../img/shop1.png);
-}
-.shop2 {
-    background: url(../img/shop2.png);
-}
-.home1 {
-    background: url(../img/home1.png);
-}
+.park1 {background: url(../img/park.png)}
+.park2 {background: url(../img/park2.png)}
+.bld1 {background: url(../img/bld.png)}
+.bld2 {background: url(../img/bld2.png)}
+.bld3 {background: url(../img/bld3.png)}
+.bld4 {background: url(../img/bld4.png)}
+.shop1 {background: url(../img/shop1.png)}
+.shop2 {background: url(../img/shop2.png)}
+.home1 {background: url(../img/home1.png)}
+.cafe1 {background: url(../img/cafe1.png)}

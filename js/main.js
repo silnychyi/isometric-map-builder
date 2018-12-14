@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     let itemsListWrap = document.querySelector(".items-list-wrap");
     let items = itemsList.querySelectorAll(".item");
     let itemsHistory = document.querySelector(".items-history");
-    let toggleBtn = document.querySelector(".close-list");
+    let closeBtn = document.querySelector(".close-list");
 
     let currentCell
 
@@ -135,7 +135,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
         cell.addEventListener("click", function _listener(){
             if(!itemsListWrap.classList.contains("items-list-active")){
-                itemsListWrap.classList.add("items-list-active")
+                itemsListWrap.classList.add("items-list-active");
+                closeBtn.classList.add("close-list-active");
+                
             }
             cells.forEach(i => {i.classList.remove("cell-active")})
             cell.classList.add("cell-active");
@@ -165,8 +167,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 
 
-    toggleBtn.addEventListener("click", ()=>{
+    closeBtn.addEventListener("click", function(){
         itemsListWrap.classList.remove("items-list-active")
+        this.classList.remove("close-list-active")
     })
    
 })
