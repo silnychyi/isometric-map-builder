@@ -7,9 +7,6 @@ body{
 
 section#view {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
@@ -33,7 +30,7 @@ section#view {
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
     transform: rotateX(55deg) rotateY(0) rotateZ(-45deg);
-    position: relative;
+    position: absolute;
     z-index: 1;
 }
 
@@ -42,8 +39,8 @@ section#view {
     font-size: 20px;
     width: 40px;
     height: 40px;
-    border: 1px solid #c0c0c0;
-    color: #c0c0c0;
+    border: 1px solid #e0dad8;
+    color: #e0dad8;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -117,6 +114,9 @@ section#view {
     left: 10px;
     top: 10px;
     padding: 0 10px;
+    background-color: #fff;
+    z-index: 999999;
+
 }
 
 .item-history-row {

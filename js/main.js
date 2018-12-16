@@ -21,7 +21,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     itemsArr = []
 
+
     gridRender(gridSize.rows, gridSize.colums);
+    grid.style.top = `${document.documentElement.clientHeight/2-grid.getBoundingClientRect().height/2-100}px`;
+    grid.style.left = `${document.documentElement.clientWidth/2-grid.getBoundingClientRect().width/2+100}px`;
+
 
 
     function gridRender(rows, colums){
@@ -160,11 +164,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 
     function cellsInit(){
-        cells.forEach((cell, index) => {
+        cells.forEach(cell => {
             if(!cell.dataset.id){
                 cell.dataset.id = idGenerator();
             }    
-            cell.addEventListener("click", function _listener(){
+            cell.addEventListener("click", ()=>{
                 if(!itemsListWrap.classList.contains("items-list-active")){
                     itemsListWrap.classList.add("items-list-active");
                     closeBtn.classList.add("close-list-active");
@@ -218,10 +222,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 
 
+    // events
+
 
     closeBtn.addEventListener("click", function(){
         itemsListWrap.classList.remove("items-list-active")
         this.classList.remove("close-list-active")
+        cells.forEach(i => {i.classList.remove("cell-active")})
+
     });
 
     addGridRowBottom.addEventListener("click", ()=>{
@@ -283,6 +291,30 @@ document.addEventListener("DOMContentLoaded", ()=>{
         renderHistory();
         renderToGrid();
     });
+
+
+
+
+
+    grid.addEventListener("mousedown", e =>{
+        currentGridTop = parseInt(grid.style.top);
+        currentGridLeft = parseInt(grid.style.left);
+        grid.addEventListener("mousemove", mousemove = a =>{
+            grid.style.top = `${currentGridTop + (a.clientY - e.clientY)}px`
+            grid.style.left = `${currentGridLeft + (a.clientX - e.clientX)}px`
+        })
+
+        grid.addEventListener("mouseup", ()=>{
+            grid.removeEventListener("mousemove", mousemove);
+            setZindex();
+        })
+    
+        grid.addEventListener("mouseleave", ()=>{
+            grid.removeEventListener("mousemove", mousemove);
+            setZindex();
+        })    
+    })
+    
 
 
 
