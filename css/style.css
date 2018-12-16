@@ -6,9 +6,11 @@ body{
 }
 
 section#view {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
 .container {
@@ -18,25 +20,65 @@ section#view {
 }
 
 .desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     text-align: center;
     color: #aaa;
 }
 
 #grid {
-    width: calc(10*50px);
-    height: calc(10*50px);
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     transform: rotateX(55deg) rotateY(0) rotateZ(-45deg);
     position: relative;
     z-index: 1;
 }
 
+.add-grid {
+    position: absolute;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #c0c0c0;
+    color: #c0c0c0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.add-grid:hover {
+    background-color: #e7bd63;
+    border: 1px solid #000;
+    color: #000;
+}
+
+.add-row-top {
+    top: -120px;
+    left: calc(50% - 20px);
+}
+.add-row-bottom {
+    bottom: -100px;
+    left: calc(50% - 20px);
+}
+.add-column-left {
+    left: -100px;
+    bottom: calc(50% - 20px);
+}
+.add-column-right {
+    right: -120px;
+    bottom: calc(50% - 20px);
+}
+
 .cell {
     box-sizing: border-box;
-    width: 50px;
-    height: 50px;
-    border: 1px dotted #998f8a;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e0dad8;
     transition: .1s;
     cursor: pointer;
     position: relative;
@@ -44,6 +86,7 @@ section#view {
 
 .cell:hover, .cell-active {
     background-color: #e7bd63;
+    border: 1px solid #000;
 }
 
 .cell .item {
