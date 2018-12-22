@@ -347,9 +347,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     })
 
 
-    // fillrandom.addEventListener("click", ()=>{
-    //     fillGrid();
-    // })
+    fillrandom.addEventListener("click", ()=>{
+        fillGrid();
+    })
     
 
     
