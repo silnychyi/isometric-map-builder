@@ -1,2 +1,2 @@
 ## DEMO
-https://silnychiy.github.io/isometric-map-builder
+https://silnychyi.github.io/isometric-map-builder
