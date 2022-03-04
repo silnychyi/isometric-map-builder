@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
     let addGridRowTop = document.querySelector(".add-row-top");
     let addGridColumnLeft = document.querySelector(".add-column-left");
     let addGridColumnRight = document.querySelector(".add-column-right");
-    let fillrandom = document.querySelector(".random-fill");
 
     let currentCell
 
@@ -221,40 +220,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
         })
     }
 
-    function fillGrid(){
-        itemsArr = []
-        cells.forEach(cell=>{
-
-            item = items[Math.floor(Math.random()*items.length)];
-            data = {
-                "id" : idGenerator(),
-                "idCell" : cell.dataset.id,
-                "class" : item.classList,
-                "zIndex" : null
-            }
-
-
-            if (item.classList.contains("road")){
-                data.zIndex = 1
-            }else if(item.classList.contains("l")) {
-                data.zIndex = parseInt(cell.getBoundingClientRect().top)+19
-            }else if(item.classList.contains("m")) {
-                data.zIndex = parseInt(cell.getBoundingClientRect().top)+10
-            }else {
-                data.zIndex = parseInt(cell.getBoundingClientRect().top)
-            }
-    
-
-            itemsArr.push(data)
-        })
-
-        renderToGrid();
-        renderHistory();
-        setZindex()
-    }
-
-
-
 
     // events
 
@@ -344,13 +309,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             grid.removeEventListener("mousemove", mousemove);
             setZindex();
         })    
-    })
-
-
-    fillrandom.addEventListener("click", ()=>{
-        fillGrid();
-    })
-    
+    })    
 
     
 // dom load

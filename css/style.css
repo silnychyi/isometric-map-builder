@@ -110,9 +110,9 @@ section#view {
     transform: rotateX(-45deg) rotateY(35deg) rotateZ(60deg);
     width: 120px;
     position: absolute;
-    top: -121px;
+    top: -161px;
     left: -61px;
-    height: 170px;
+    height: 210px;
     pointer-events: none;
     transform-origin: bottom center;
     background-repeat: no-repeat;
