@@ -1,4 +1,3 @@
-/* roads */
 .road1 {background: url(../img/road1.png)}
 .road2 {background: url(../img/road2.png)}
 .road3 {background: url(../img/road3.png)}
@@ -13,6 +12,20 @@
 .road11 {background: url(../img/road11.png)}
 .empty-road {background: url(../img/empty-road.png)}
 .empty-grass {background: url(../img/empty-grass.png)}
+
+.water1 {background: url(../img/water1.png)}
+.water2 {background: url(../img/water2.png)}
+.water3 {background: url(../img/water3.png)}
+.water4 {background: url(../img/water4.png)}
+.water5 {background: url(../img/water5.png)}
+.water6 {background: url(../img/water6.png)}
+.water7 {background: url(../img/water7.png)}
+.water8 {background: url(../img/water8.png)}
+.water9 {background: url(../img/water9.png)}
+.water10 {background: url(../img/water10.png)}
+.water11 {background: url(../img/water11.png)}
+.water12 {background: url(../img/water12.png)}
+.water13 {background: url(../img/water13.png)}
 
 .park1 {background: url(../img/park.png)}
 .park2 {background: url(../img/park2.png)}
